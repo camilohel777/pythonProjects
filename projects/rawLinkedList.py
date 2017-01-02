@@ -7,11 +7,26 @@ class LinkedList(object):
     def __init__(self):
         self.first = None
         
-    def newNode(self, data):
+    def insertFront(self, data):
         new_node = Node()
         new_node.data = data
-        new_node.next = self.first
-        self.first = new_node
+        new_node.next = self.head
+        self.head = new_node
+    
+    def insertTail(self, data):
+        new_node = Node()
+        new_node.data = data
+        if self.head == None:
+            self.head = new_node
+            new_node.next = None
+        else:
+            iterator = self.head
+            while iterator:
+                if iterator.next == None:
+                    iterator.next = new_node
+                    new_node.next = None
+                    break
+                iterator = iterator.next
         
     def print_list(self):
         iterator = self.first
